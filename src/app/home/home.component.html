@@ -1,0 +1,57 @@
+<div class="wrapper">
+    <div class="title-text">
+        <div class="title login">
+            Login Form</div>
+        <div class="title signup">
+            Signup Form</div>
+    </div>
+    <div [className]="errorMessage ? 'errorMessage' : 'hidden'">
+        <h5>Passwords are not the same</h5>
+    </div>
+    <div class="form-container">
+        <div class="slide-controls">
+            <input type="radio" name="slide" id="login" checked>
+            <input type="radio" name="slide" id="signup">
+            <label for="login" class="slide login" (click)="onChangeAction()">Login</label>
+            <label for="signup" class="slide signup" (click)="onChangeAction()">Signup</label>
+            <div class="slider-tab">
+            </div>
+        </div>
+        <div class="form-inner">
+            <form [formGroup]="userForm" [className]="actionType ? 'hidden' : 'login'">
+                <div class="field">
+                    <input type="text" formControlName="email" placeholder="E-mail" required>
+                </div>
+                <div class="field">
+                    <input type="password" formControlName="password" placeholder="Password" required>
+                </div>
+                <div class="pass-link">
+                </div>
+                <div class="field btn">
+                    <div class="btn-layer">
+                    </div>
+                    <input type="submit" (click)="onClickAction()" value="Login">
+                </div>
+            </form>
+        </div>
+        <div class="form-inner">
+            <form [formGroup]="userForm" [className]="actionType ? 'signup' : 'hidden'">
+                <div class="field">
+                    <input type="text" formControlName="email" placeholder="Email Address" required>
+                </div>
+                <div class="field">
+                    <input type="password" formControlName="password" placeholder="Password" required>
+                </div>
+                <div class="field">
+                    <input type="password" formControlName="confirmPassword" placeholder="Confirm password" required>
+                </div>
+                <div class="field btn">
+                    <div class="btn-layer">
+                    </div>
+                    <input type="submit" value="Signup" (click)="onClickAction()">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<router-outlet></router-outlet>

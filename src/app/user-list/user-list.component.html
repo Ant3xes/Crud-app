@@ -1,0 +1,23 @@
+<h2>User Gestion</h2>
+<div [className]="errorMessage ? 'errorMessage' : 'hidden'">
+    <h5>Passwords are not the same</h5>
+</div>
+<form [formGroup]="userForm">
+    <input placeholder="Email" type="text" formControlName="email" />
+    <input placeholder="Password" type="password" formControlName="password" />
+    <input placeholder="Confirmed Password" type="password" formControlName="confirmPassword" />
+    <button class="button button3" (click)="registerAction('NewUser', 0)">Add user</button>
+    <table>
+        <tr>
+            <th>Email</th>
+            <th>Action</th>
+        </tr>
+        <tr *ngFor="let user of users">
+            <td><input placeholder="{{user.email}}" formControlName="email" /></td>
+            <td>
+                <button class="button button1" (click)="registerAction('ModifyUser', user.id)">Modify</button>
+                <button class="button button2" (click)="registerAction('DeleteUser', user.id)">Delete</button>
+            </td>
+        </tr>
+    </table>
+</form>
